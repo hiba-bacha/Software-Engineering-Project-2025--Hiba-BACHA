@@ -130,7 +130,7 @@ Mesures (ms) : {compresser_ms=0.0017, decompresser_ms=0.0010, acceder_ms=0.0003}
 Les mesures sont calculées à l’aide de la classe `BenchProto`, avec plusieurs répétitions pour obtenir des moyennes fiables.  
 
 ---
-### 📘 Documentation du code  
+### Documentation du code  
 
 Une documentation complète du code (JavaDoc) est disponible.  
 
