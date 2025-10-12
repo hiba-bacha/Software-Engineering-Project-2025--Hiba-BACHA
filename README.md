@@ -15,7 +15,7 @@ Chaque variante fournit trois fonctions principales :
 - `decompresser(int[] tampon)`  
 - `acceder(int i)`  
 
-
+---
 
 ##  Technologies utilisées  
 
@@ -24,11 +24,11 @@ Chaque variante fournit trois fonctions principales :
 - **IDE recommandé :** Visual Studio Code, IntelliJ IDEA ou Eclipse  
 - **Systèmes compatibles :** Windows, Linux, macOS  
 
-
+---
 
 ##  Structure du projet  
 
-
+```
 ├── src/
 │   ├── codagebits/
 │   │   ├── CodeurBits.java              # Interface principale
@@ -43,9 +43,9 @@ Chaque variante fournit trois fonctions principales :
         └── Main.java
 ├── out/                                 # Fichiers compilés (.class)
 └── README.md
+```
 
-
-
+---
 
 ##  Installation  
 
@@ -54,21 +54,21 @@ Chaque variante fournit trois fonctions principales :
 git clone https://github.com/hiba-bacha/Software-Engineering-Project-2025--Hiba-BACHA
 cd Software-Engineering-Project-2025--Hiba-BACHA
 
-
+```
 
 ### 2. Compiler le projet  
 
 **Sous Windows (PowerShell) :**
 ```powershell
 javac -d out (Get-ChildItem -Recurse -Filter *.java).FullName
-
+```
 
 **Sous Linux / macOS :**
 ```bash
 javac -d out $(find src -name "*.java")
 ```
 
-
+---
 
 ##  Exécution  
 
@@ -84,7 +84,7 @@ java -cp out app.DemoEnonce avec
 java -cp out app.DemoEnonce debordement
 ```
 
-
+---
 
 ##  Fonctionnalités principales  
 
@@ -95,7 +95,7 @@ java -cp out app.DemoEnonce debordement
 - **Mesures de performance** sur les fonctions principales : `compresser`, `decompresser`, `acceder`.  
 - **Mode overflow** qui sépare petites et grandes valeurs pour un encodage plus efficace.  
 
-
+---
 
 ##  Exemple d’utilisation  
 
@@ -104,7 +104,7 @@ java -cp out app.DemoEnonce debordement
 Original (neg): [-5, -1, 0, 3, 7]
 mode=sans get(2)=0 ok=true
 Mesures (ms) : {compresser_ms=0.0015, decompresser_ms=0.0011, acceder_ms=0.0003}
-
+```
 
 ### Exemple 2 : Mode avec chevauchement
 ```
@@ -129,7 +129,7 @@ Mesures (ms) : {compresser_ms=0.0017, decompresser_ms=0.0010, acceder_ms=0.0003}
 ```
 Les mesures sont calculées à l’aide de la classe `BenchProto`, avec plusieurs répétitions pour obtenir des moyennes fiables.  
 
-
+---
 
 ##  Contributrice  
 
@@ -137,7 +137,7 @@ Les mesures sont calculées à l’aide de la classe `BenchProto`, avec plusieur
 - **Université :** Université Nice Côte d'Azur 
 - **Année :** 2025  
 
-
+---
 
 
   
