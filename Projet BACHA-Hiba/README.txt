@@ -1,50 +1,143 @@
-# Software-Engineering-Project-2025--Hiba-BACHA
-Projet Bit Packing
-Description
-Ce projet implémente un système de compression d’entiers par Bit Packing.
-Trois variantes sont disponibles :
-•	Sans chevauchement : les valeurs sont alignées dans les mots de 32 bits.
-•	Avec chevauchement : les valeurs peuvent être découpées entre deux mots.
-•	Avec débordement (overflow) : les petites valeurs sont codées normalement, les grandes sont placées dans une zone spéciale de débordement.
+#  Projet Bit Packing – Génie Logiciel 2025
 
-Chaque variante fournit trois fonctions :
-•	compresser(int[] tableau)
-•	decompresser(int[] tampon)
-•	acceder(int i)
+##  Description  
 
+Ce projet implémente un système de **compression d’entiers par Bit Packing**.  
+Le but est de réduire la taille d’un tableau d’entiers tout en gardant la possibilité d’accéder directement à chaque élément sans tout décompresser.  
 
-Structure du projet
+Trois variantes sont disponibles :  
+- **Sans chevauchement** : les valeurs sont alignées dans les mots de 32 bits.  
+- **Avec chevauchement** : les valeurs peuvent être découpées entre deux mots.  
+- **Avec débordement (overflow)** : les petites valeurs sont codées normalement, les grandes sont placées dans une zone spéciale de débordement.  
+
+Chaque variante fournit trois fonctions principales :  
+- `compresser(int[] tableau)`  
+- `decompresser(int[] tampon)`  
+- `acceder(int i)`  
+
+---
+
+##  Technologies utilisées  
+
+- **Langage :** Java  
+- **Version :** Java 21 (compatible à partir de Java 17)  
+- **IDE recommandé :** Visual Studio Code, IntelliJ IDEA ou Eclipse  
+- **Systèmes compatibles :** Windows, Linux, macOS  
+
+---
+
+##  Structure du projet  
+
+```
 ├── src/
 │   ├── codagebits/
+│   │   ├── CodeurBits.java              # Interface principale
 │   │   ├── CodeurSansChev.java          # Version sans chevauchement
-│   │   ├── CodeurAvecChev.java # Version avec chevauchement
-│   │   ├── CodeurDebordement.java   # Version avec overflow
+│   │   ├── CodeurAvecChev.java          # Version avec chevauchement
+│   │   ├── CodeurDebordement.java       # Version avec overflow
 │   │   ├── OutilsBits.java              # Lecture/écriture de bits
 │   │   └── FactoryCodeurBits.java       # Fabrique de codeurs
-│   └── appl/
+│   └── app/
 │       ├── DemoEnonce.java              # Démonstration avec mesures
-│       └── BenchProto.java              # Banc de test pour les temps
+│       └── BenchProto.java  
+        └── Main.java
 ├── out/                                 # Fichiers compilés (.class)
-└── README.txt
+└── README.md
+```
 
+---
 
+##  Installation  
 
-Fonctionnalités principales
-•	Compression d’entiers en int[] optimisé en nombre de bits.
-•	Décompression avec restitution exacte du tableau original.
-•	Accès direct à un élément acceder(i) sans décompression complète.
-•	Variante overflow qui sépare petites et grandes valeurs.
-•	Mesure du temps d’exécution des opérations principales.
+### 1. Cloner le projet  
+```bash
+git clone https://github.com/hiba-bacha/Software-Engineering-Project-2025--Hiba-BACHA
+cd Software-Engineering-Project-2025--Hiba-BACHA
 
-Compilation : ( Depuis src ) 
+```
 
-WINDOWS
+### 2. Compiler le projet  
+
+**Sous Windows (PowerShell) :**
+```powershell
 javac -d out (Get-ChildItem -Recurse -Filter *.java).FullName
+```
 
-LINUX/MAC
+**Sous Linux / macOS :**
+```bash
 javac -d out $(find src -name "*.java")
+```
 
-Exécution : 
+---
+
+##  Exécution  
+
+Exécuter le projet en précisant le mode souhaité :  
+```bash
+# Mode sans chevauchement
 java -cp out app.DemoEnonce sans
+
+# Mode avec chevauchement
 java -cp out app.DemoEnonce avec
-java -cp out appl.DemoEnonce debordement
+
+# Mode avec débordement (overflow)
+java -cp out app.DemoEnonce debordement
+```
+
+---
+
+##  Fonctionnalités principales  
+
+- **Compression d’entiers** optimisée en nombre de bits (`int[]`).  
+- **Décompression sans perte**, le tableau original est entièrement retrouvé.  
+- **Accès direct** à un élément (`acceder(i)`) sans décompresser tout le tableau.  
+- **Gestion des entiers négatifs** avec un système d’offset.  
+- **Mesures de performance** sur les fonctions principales : `compresser`, `decompresser`, `acceder`.  
+- **Mode overflow** qui sépare petites et grandes valeurs pour un encodage plus efficace.  
+
+---
+
+##  Exemple d’utilisation  
+
+### Exemple 1 : Mode sans chevauchement
+```
+Original (neg): [-5, -1, 0, 3, 7]
+mode=sans get(2)=0 ok=true
+Mesures (ms) : {compresser_ms=0.0015, decompresser_ms=0.0011, acceder_ms=0.0003}
+```
+
+### Exemple 2 : Mode avec chevauchement
+```
+Original (rand): [91, 37, -86, 76, -88, -41, -88, 48, -23, -42]
+mode=avec get(5)=-41 ok=true
+Mesures (ms) : {compresser_ms=0.0018, decompresser_ms=0.0012, acceder_ms=0.0003}
+```
+
+### Exemple 3 : Mode débordement (overflow)
+```
+Exemple overflow : [1, 2, 3, 1024, 4, 5, 2048]
+Restauration     : [1, 2, 3, 1024, 4, 5, 2048]
+Acces direct ex.: i=3 -> 1024, i=6 -> 2048
+```
+
+---
+
+## Exemple de mesures de performance  
+
+```
+Mesures (ms) : {compresser_ms=0.0017, decompresser_ms=0.0010, acceder_ms=0.0003}
+```
+Les mesures sont calculées à l’aide de la classe `BenchProto`, avec plusieurs répétitions pour obtenir des moyennes fiables.  
+
+---
+
+##  Contributrice  
+
+- **Nom :** Hiba BACHA  
+- **Université :** Université Nice Côte d'Azur 
+- **Année :** 2025  
+
+---
+
+
+  
