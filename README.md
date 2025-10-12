@@ -29,7 +29,7 @@ Chaque variante fournit trois fonctions principales :
 ##  Structure du projet  
 
 ```
-├── src/
+├── src/main/java
 │   ├── codagebits/
 │   │   ├── CodeurBits.java              # Interface principale
 │   │   ├── CodeurSansChev.java          # Version sans chevauchement
