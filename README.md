@@ -75,13 +75,13 @@ javac -d out $(find src -name "*.java")
 Exécuter le projet en précisant le mode souhaité :  
 ```bash
 # Mode sans chevauchement
-java -cp out appl.DemoEnonce sans
+java -cp out app.DemoEnonce sans
 
 # Mode avec chevauchement
-java -cp out appl.DemoEnonce avec
+java -cp out app.DemoEnonce avec
 
 # Mode avec débordement (overflow)
-java -cp out appl.DemoEnonce debordement
+java -cp out app.DemoEnonce debordement
 ```
 
 ---
