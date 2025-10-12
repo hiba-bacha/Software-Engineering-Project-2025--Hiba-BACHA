@@ -130,6 +130,34 @@ Mesures (ms) : {compresser_ms=0.0017, decompresser_ms=0.0010, acceder_ms=0.0003}
 Les mesures sont calculées à l’aide de la classe `BenchProto`, avec plusieurs répétitions pour obtenir des moyennes fiables.  
 
 ---
+### 📘 Documentation du code  
+
+Une documentation complète du code (JavaDoc) est disponible.  
+
+#### 🛠️ Génération (optionnelle)
+Pour générer la documentation sur ton poste :  
+
+##### Windows
+```powershell
+javadoc -d docs -sourcepath src/main/java -subpackages codagebits,app -encoding UTF-8 -private -author -version
+```
+
+##### Linux / macOS
+```bash
+javadoc -d docs -sourcepath src/main/java -subpackages codagebits,app -encoding UTF-8 -private -author -version
+```
+
+####  [Consulter la documentation JavaDoc](./docs/index.html)
+
+> Cliquez sur le lien ci-dessus pour ouvrir la documentation dans votre navigateur  
+> (ou double-cliquez sur `docs/index.html` depuis votre explorateur de fichiers).
+
+La documentation inclut :  
+- une description de chaque **classe**, **méthode** et **champ** ;  
+- les tags `@param`, `@return`, `@throws` ;  
+- des paragraphes explicatifs `<p>` pour faciliter la compréhension de la logique du code.
+
+---
 
 ##  Contributrice  
 
