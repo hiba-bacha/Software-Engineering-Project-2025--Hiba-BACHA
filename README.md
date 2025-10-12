@@ -40,7 +40,7 @@ Chaque variante fournit trois fonctions principales :
 │   └── app/
 │       ├── DemoEnonce.java              # Démonstration avec mesures
 │       └── BenchProto.java  
-                    # Banc de test pour les temps
+        └── Main.java
 ├── out/                                 # Fichiers compilés (.class)
 └── README.md
 ```
@@ -52,7 +52,7 @@ Chaque variante fournit trois fonctions principales :
 ### 1. Cloner le projet  
 ```bash
 git clone https://github.com/hiba-bacha/Software-Engineering-Project-2025--Hiba-BACHA
-cd cd Software-Engineering-Project-2025--Hiba-BACHA
+cd Software-Engineering-Project-2025--Hiba-BACHA
 
 ```
 
