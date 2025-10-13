@@ -190,7 +190,7 @@ Chaque fichier de test suit la convention de nommage : **NomDeClasse + "Test"**
 
 ---
 
-### Exécution des tests
+### Exécution des tests ( Depuis la racine )
 Pour lancer tous les tests :
 ```bash
 mvn test
