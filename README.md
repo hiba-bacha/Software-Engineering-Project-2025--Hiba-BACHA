@@ -65,7 +65,7 @@ cd Software-Engineering-Project-2025--Hiba-BACHA
 
 ### 2. Compiler le projet  
 
-**Sous Windows (PowerShell) :**
+**Sous Windows (PowerShell) :** Depuis src/main/java
 ```powershell
 javac -d out (Get-ChildItem -Recurse -Filter *.java).FullName
 ```
