@@ -159,6 +159,60 @@ La documentation inclut :
 
 ---
 
+## Tests unitaires (JUnit 5)
+
+Les tests unitaires ont été réalisés avec le framework **JUnit 5 (Jupiter)** afin de vérifier le bon fonctionnement des classes principales du projet.
+
+###  Organisation
+Les tests sont placés dans un dossier séparé :
+```
+src/
+├── main/java/           # Code source principal
+│   ├── codagebits/
+│   └── app/
+└── test/java/           # Dossier contenant les tests unitaires
+    └── codagebits/
+        ├── CodeurSansChevTest.java
+        ├── CodeurAvecChevTest.java
+        ├── CodeurDebordementTest.java
+        
+```
+
+Chaque fichier de test suit la convention de nommage : **NomDeClasse + "Test"**  
+(exemple : `CodeurSansChevTest`).
+
+---
+
+### Exécution des tests
+Pour lancer tous les tests :
+```bash
+mvn test
+```
+
+ Maven télécharge automatiquement JUnit, compile le code et exécute les tests.
+
+Exemple de sortie :
+```
+[INFO] Tests run: 7, Failures: 0, Errors: 0, Skipped: 0
+[INFO] BUILD SUCCESS
+```
+
+###  Classes testées
+- **CodeurSansChev** → vérifie la compression, décompression et l’accès direct.  
+- **CodeurAvecChev** → vérifie la gestion des bits chevauchants.  
+- **CodeurDebordement** → vérifie la gestion des grandes valeurs et des négatifs.  
+---
+
+###  Outils utilisés
+- **Framework de test :** JUnit 5 (Jupiter)  
+- **Gestionnaire de build :** Apache Maven  
+- **Commande principale :**
+```bash
+mvn test
+```
+
+---
+
 ##  Contributrice  
 
 - **Nom :** Hiba BACHA  
