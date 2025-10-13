@@ -29,6 +29,7 @@ Chaque variante fournit trois fonctions principales :
 ##  Structure du projet  
 
 ```
+
 ├── src/main/java
 │   ├── codagebits/
 │   │   ├── CodeurBits.java              # Interface principale
@@ -39,10 +40,16 @@ Chaque variante fournit trois fonctions principales :
 │   │   └── FactoryCodeurBits.java       # Fabrique de codeurs
 │   └── app/
 │       ├── DemoEnonce.java              # Démonstration avec mesures
-│       └── BenchProto.java  
-        └── Main.java
+│       ├── BenchProto.java  
+│       └── Main.java
+└── test/java/           # Dossier contenant les tests unitaires
+    └── codagebits/
+        ├── CodeurSansChevTest.java
+        ├── CodeurAvecChevTest.java
+        ├── CodeurDebordementTest.java
 ├── out/                                 # Fichiers compilés (.class)
 └── README.md
+```
 ```
 
 ---
