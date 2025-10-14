@@ -189,7 +189,48 @@ Chaque fichier de test suit la convention de nommage : **NomDeClasse + "Test"**
 (exemple : `CodeurSansChevTest`).
 
 ---
+Installation de Maven
 
+Avant de compiler ou exécuter le projet, il faut s’assurer que **Maven** est installé sur votre système.  
+Maven est un outil de gestion et d’automatisation de projet Java utilisé ici pour compiler, tester et documenter le code.
+
+---
+
+### 🪟 Sous **Windows**
+
+> Si vous avez déjà installé [Chocolatey](https://chocolatey.org/install), exécutez simplement cette commande dans **PowerShell (en mode Administrateur)** :
+
+```powershell
+choco install maven
+```
+
+### 🐧 Sous **Linux / Ubuntu / Debian**
+
+Exécutez les commandes suivantes dans un terminal :
+```bash
+sudo apt update
+sudo apt install maven -y
+```
+
+Vérifiez l’installation :
+```bash
+mvn -v
+```
+---
+
+### Sous **macOS**
+
+Si vous utilisez **Homebrew**, tapez simplement :
+```bash
+brew install maven
+```
+
+Puis vérifiez :
+```bash
+mvn -v
+---
+
+  ```
 ### Exécution des tests ( Depuis la racine )
 Pour lancer tous les tests :
 ```bash
