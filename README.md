@@ -15,14 +15,33 @@ Chaque variante fournit trois fonctions principales :
 - `decompresser(int[] tampon)`  
 - `acceder(int i)`  
 
+
+##  Fonctionnalités principales
+
+- **Compression d’entiers** optimisée en nombre de bits (`int[]`).
+- **Décompression sans perte**, le tableau original est entièrement retrouvé.
+- **Accès direct** à un élément (`acceder(i)`) sans décompresser tout le tableau.
+- **Gestion des entiers négatifs** avec un système d’offset.
+- **Mesures de performance** sur les fonctions principales : `compresser`, `decompresser`, `acceder`.
+- **Mode overflow** qui sépare petites et grandes valeurs pour un encodage plus efficace.
+
 ---
 
 ##  Technologies utilisées  
 
-- **Langage :** Java  
-- **Version :** Java 21 (compatible à partir de Java 17)  
-- **IDE recommandé :** Visual Studio Code, IntelliJ IDEA ou Eclipse  
-- **Systèmes compatibles :** Windows, Linux, macOS  
+### Développement
+- **Java 21** - Langage de programmation
+- **JUnit 5** - Tests unitaires
+- **Maven** - Gestion du projet et dépendances
+
+### Environnement
+- **Visual Studio Code**, **IntelliJ IDEA** ou **Eclipse** - Environnement de développement
+- **Git & GitHub** - Gestion de version
+- **Windows**, **Linux**, **macOS** - Systèmes compatibles
+
+### Documentation
+- **Javadoc** - Documentation technique
+- **Markdown** - Documentation projet
 
 ---
 
@@ -50,7 +69,7 @@ Chaque variante fournit trois fonctions principales :
 ├── out/                                 # Fichiers compilés (.class)
 └── README.md
 ```
-```
+
 
 ---
 
@@ -59,18 +78,30 @@ Chaque variante fournit trois fonctions principales :
 ### 1. Cloner le projet  
 ```bash
 git clone https://github.com/hiba-bacha/Software-Engineering-Project-2025--Hiba-BACHA
-cd Software-Engineering-Project-2025--Hiba-BACHA
-
 ```
 
 ### 2. Compiler le projet  
 
-**Sous Windows (PowerShell) :** Depuis src/main/java
+**Sous Windows (PowerShell) :**
+
+Ce deplacer dans le dossier java 
+```powershell
+cd '.\Projet BACHA-Hiba\src\main\java\'
+```
+
+Compiler le projet
 ```powershell
 javac -d out (Get-ChildItem -Recurse -Filter *.java).FullName
 ```
 
 **Sous Linux / macOS :**
+
+Se deplacer dans le dossier `Projet BACHA-Hiba`
+```bash
+cd '.\Projet BACHA-Hiba\
+```
+
+Compiler le projet
 ```bash
 javac -d out $(find src -name "*.java")
 ```
@@ -93,16 +124,7 @@ java -cp out app.DemoEnonce debordement
 
 ---
 
-##  Fonctionnalités principales  
 
-- **Compression d’entiers** optimisée en nombre de bits (`int[]`).  
-- **Décompression sans perte**, le tableau original est entièrement retrouvé.  
-- **Accès direct** à un élément (`acceder(i)`) sans décompresser tout le tableau.  
-- **Gestion des entiers négatifs** avec un système d’offset.  
-- **Mesures de performance** sur les fonctions principales : `compresser`, `decompresser`, `acceder`.  
-- **Mode overflow** qui sépare petites et grandes valeurs pour un encodage plus efficace.  
-
----
 
 ##  Exemple d’utilisation  
 
@@ -127,9 +149,7 @@ Restauration     : [1, 2, 3, 1024, 4, 5, 2048]
 Acces direct ex.: i=3 -> 1024, i=6 -> 2048
 ```
 
----
-
-## Exemple de mesures de performance  
+### Exemple 4 : Mesures de performance  
 
 ```
 Mesures (ms) : {compresser_ms=0.0017, decompresser_ms=0.0010, acceder_ms=0.0003}
@@ -137,32 +157,33 @@ Mesures (ms) : {compresser_ms=0.0017, decompresser_ms=0.0010, acceder_ms=0.0003}
 Les mesures sont calculées à l’aide de la classe `BenchProto`, avec plusieurs répétitions pour obtenir des moyennes fiables.  
 
 ---
-### Documentation du code  
+## Génération de la Documentation Javadoc 
 
-Une documentation complète du code (JavaDoc) est disponible.  
+**Documentation technique du projet**  
+Cette section explique comment générer la documentation Javadoc complète du projet, détaillant toutes les classes, méthodes et packages implémentés.  
 
-#### 🛠️ Génération (optionnelle)
-Pour générer la documentation sur ton poste :  
 
-##### Windows
+### 1. Se deplacer dans le dossier `Projet BACHA-Hiba`
 ```powershell
-javadoc -d docs -sourcepath src/main/java -subpackages codagebits,app -encoding UTF-8 -private -author -version
+cd '.\Projet BACHA-Hiba\'  
+```
+### 2. Générer la Javadoc
+##### Pour Windows (CMD/PowerShell)
+```powershell
+javadoc -d documentation -sourcepath src/main/java -subpackages app:codagebits -encoding UTF-8 -charset UTF-8
 ```
 
-##### Linux / macOS
+##### Pour Linux / macOS
 ```bash
-javadoc -d docs -sourcepath src/main/java -subpackages codagebits,app -encoding UTF-8 -private -author -version
+javadoc -d documentation/ -sourcepath src/main/java -subpackages app:codagebits -encoding UTF-8 -charset UTF-8
 ```
 
-####  [Consulter la documentation JavaDoc](./docs/index.html)
+### 3. Accéder à la documentation
+Une fois générée, ouvrez le fichier :
+```
+documentation/index.html
+```
 
-> Cliquez sur le lien ci-dessus pour ouvrir la documentation dans votre navigateur  
-> (ou double-cliquez sur `docs/index.html` depuis votre explorateur de fichiers).
-
-La documentation inclut :  
-- une description de chaque **classe**, **méthode** et **champ** ;  
-- les tags `@param`, `@return`, `@throws` ;  
-- des paragraphes explicatifs `<p>` pour faciliter la compréhension de la logique du code.
 
 ---
 
@@ -185,18 +206,21 @@ src/
         
 ```
 
-Chaque fichier de test suit la convention de nommage : **NomDeClasse + "Test"**  
-(exemple : `CodeurSansChevTest`).
+### Classes testées
 
----
-Installation de Maven
+| Classe | Fonctionnalités testées |
+|--------|------------------------|
+| `CodeurSansChev` | Compression, décompression et accès direct |
+| `CodeurAvecChev` | Gestion des bits chevauchants |
+| `CodeurDebordement` | Gestion des grandes valeurs et des négatifs |
+
+
+### Prérequis : Installation de Maven
 
 Avant de compiler ou exécuter le projet, il faut s’assurer que **Maven** est installé sur votre système.  
 Maven est un outil de gestion et d’automatisation de projet Java utilisé ici pour compiler, tester et documenter le code.
 
----
-
-### 🪟 Sous **Windows**
+#### Sous Windows
 
 > Si vous avez déjà installé [Chocolatey](https://chocolatey.org/install), exécutez simplement cette commande dans **PowerShell (en mode Administrateur)** :
 
@@ -204,7 +228,7 @@ Maven est un outil de gestion et d’automatisation de projet Java utilisé ici 
 choco install maven
 ```
 
-### 🐧 Sous **Linux / Ubuntu / Debian**
+#### Sous Linux / Ubuntu / Debian
 
 Exécutez les commandes suivantes dans un terminal :
 ```bash
@@ -212,51 +236,35 @@ sudo apt update
 sudo apt install maven -y
 ```
 
-Vérifiez l’installation :
-```bash
-mvn -v
-```
----
-
-### Sous **macOS**
+#### Sous macOS
 
 Si vous utilisez **Homebrew**, tapez simplement :
 ```bash
 brew install maven
 ```
 
-Puis vérifiez :
+#### Vérifiez l'installation :
 ```bash
 mvn -v
----
+```
 
-  ```
-### Exécution des tests ( Depuis la racine )
-Pour lancer tous les tests :
+### Exécution des tests 
+#### Assurez vous d'être dans le dossier `Projet BACHA-Hiba`
+```powershell
+cd '.\Projet BACHA-Hiba\'  
+```
+
+#### Lancer tous les tests avec la commande :
 ```bash
 mvn test
 ```
 
- Maven télécharge automatiquement JUnit, compile le code et exécute les tests.
+ > Maven télécharge automatiquement JUnit, compile le code et exécute les tests.
 
-Exemple de sortie :
+#### Exemple de sortie :
 ```
 [INFO] Tests run: 7, Failures: 0, Errors: 0, Skipped: 0
 [INFO] BUILD SUCCESS
-```
-
-###  Classes testées
-- **CodeurSansChev** → vérifie la compression, décompression et l’accès direct.  
-- **CodeurAvecChev** → vérifie la gestion des bits chevauchants.  
-- **CodeurDebordement** → vérifie la gestion des grandes valeurs et des négatifs.  
----
-
-###  Outils utilisés
-- **Framework de test :** JUnit 5 (Jupiter)  
-- **Gestionnaire de build :** Apache Maven  
-- **Commande principale :**
-```bash
-mvn test
 ```
 
 ---
