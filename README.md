@@ -130,16 +130,19 @@ java -cp out app.DemoEnonce debordement
 
 ### Exemple 1 : Mode sans chevauchement
 ```
-Original (neg): [-5, -1, 0, 3, 7]
-mode=sans get(2)=0 ok=true
-Mesures (ms) : {compresser_ms=0.0015, decompresser_ms=0.0011, acceder_ms=0.0003}
+Original (neg): [5, -3, 12, -7, 0, -8, 1]
+Tableau compressé : [7, 5, 0, 8, 8442029, 9]
+Tableau décompressé : [5, -3, 12, -7, 0, -8, 1]
+mode=sans get(3)=-7 ok=true
+Mesures (ms) pour neg : {compresser_ms=0.0042899999999999995, decompresser_ms=0.0011800000000000003, acceder_ms=3.15E-4}
+
 ```
 
 ### Exemple 2 : Mode avec chevauchement
 ```
 Original (rand): [91, 37, -86, 76, -88, -41, -88, 48, -23, -42]
-mode=avec get(5)=-41 ok=true
-Mesures (ms) : {compresser_ms=0.0018, decompresser_ms=0.0012, acceder_ms=0.0003}
+mode=avec get(4)=-88 ok=true
+Mesures (ms) pour rand : {compresser_ms=0.0017250000000000004, decompresser_ms=0.0011250000000000003, acceder_ms=2.3999999999999998E-4}
 ```
 
 ### Exemple 3 : Mode débordement (overflow)
