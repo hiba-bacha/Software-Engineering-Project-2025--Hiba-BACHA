@@ -15,7 +15,7 @@ L’objectif est de :
 
 ---
 
-##  Fonctionnalités principales
+## Fonctionnalités principales
 
 - **Compression / Décompression d’entiers** en flux binaire optimisé (`int[]`)
 - **Accès direct (`acceder(i)`)** sans décompression complète  
@@ -40,7 +40,7 @@ L’objectif est de :
 ### Environnement
 - Compatible **Windows**, **Linux** et **macOS**  
 - IDE recommandés : *Visual Studio Code*, *IntelliJ IDEA*, *Eclipse*  
-- Contrôle de version : **Git & GitHub**
+- Contrôle de version : **GitHub**
 
 ### Documentation
 - **Javadoc** – Documentation technique générée automatiquement  
@@ -48,7 +48,9 @@ L’objectif est de :
 
 ---
 
-## Structure du projet  
+## 📁 Structure du projet  
+
+
 ```
 ├── pom.xml
 ├── src/main/java
@@ -126,8 +128,6 @@ java -cp out app.DemoEnonce debordement 50 10
 
 ---
 
-
-
 ##  Exemple d’utilisation  
 
 ### Exemple 1 : Mode sans chevauchement
@@ -186,8 +186,6 @@ Une fois générée, ouvrez le fichier :
 ```
 documentation/index.html
 ```
-
-
 ---
 
 ## Tests unitaires (JUnit 5)
