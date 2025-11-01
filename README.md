@@ -1,52 +1,54 @@
-#  Projet Bit Packing – Génie Logiciel 2025
+# Projet Bit Packing – Génie Logiciel 2025  
+### *Hiba BACHA – Université Côte d’Azur – Master 1 Informatique*  
 
-##  Description  
+---
 
-Ce projet implémente un système de **compression d’entiers par Bit Packing**.  
-Le but est de réduire la taille d’un tableau d’entiers tout en gardant la possibilité d’accéder directement à chaque élément sans tout décompresser.  
+## Description  
 
-Trois variantes sont disponibles :  
-- **Sans chevauchement** : les valeurs sont alignées dans les mots de 32 bits.  
-- **Avec chevauchement** : les valeurs peuvent être découpées entre deux mots.  
-- **Avec débordement (overflow)** : les petites valeurs sont codées normalement, les grandes sont placées dans une zone spéciale de débordement.  
+Ce projet implémente un système de **compression d’entiers par Bit Packing**, visant à **accélérer la transmission** des données tout en **préservant l’accès direct** aux éléments du tableau compressé.
 
-Chaque variante fournit trois fonctions principales :  
-- `compresser(int[] tableau)`  
-- `decompresser(int[] tampon)`  
-- `acceder(int i)`  
+L’objectif est de :
+- **Réduire la taille** d’un tableau d’entiers à transmettre,  
+- **Mesurer la rentabilité** de la compression selon le **débit** et la **latence réseau**,  
+- Comparer plusieurs **modes de compression**,  
+- Conserver la possibilité d’accéder directement à un élément `i` sans décompression complète.  
 
+---
 
 ##  Fonctionnalités principales
 
-- **Compression d’entiers** optimisée en nombre de bits (`int[]`).
-- **Décompression sans perte**, le tableau original est entièrement retrouvé.
-- **Accès direct** à un élément (`acceder(i)`) sans décompresser tout le tableau.
-- **Gestion des entiers négatifs** avec un système d’offset.
-- **Mesures de performance** sur les fonctions principales : `compresser`, `decompresser`, `acceder`.
-- **Mode overflow** qui sépare petites et grandes valeurs pour un encodage plus efficace.
+- **Compression / Décompression d’entiers** en flux binaire optimisé (`int[]`)
+- **Accès direct (`acceder(i)`)** sans décompression complète  
+- **Gestion des entiers négatifs** via un offset automatique  
+- **Mesures CPU précises** sur `compresser`, `decompresser`, `acceder`
+- **Simulation de transmission réseau** avec **débit (Mb/s)** et **latence (ms)**
+- **Calcul du taux de compression**, du **temps de transmission** et du **verdict de rentabilité**
+- **Mode Overflow (débordement)** pour isoler les grandes valeurs dans une zone spéciale
+- **Interface console interactive** (`Main.java`)
+- **Documentation Javadoc complète**  
+- **Tests unitaires** avec JUnit 5
 
 ---
 
-##  Technologies utilisées  
+## Technologies utilisées  
 
 ### Développement
-- **Java 21** - Langage de programmation
-- **JUnit 5** - Tests unitaires
-- **Maven** - Gestion du projet et dépendances
+- **Langage** : Java 21  
+- **Framework de tests** : JUnit 5  
+- **Gestionnaire de build** : Maven  
 
 ### Environnement
-- **Visual Studio Code**, **IntelliJ IDEA** ou **Eclipse** - Environnement de développement
-- **Git & GitHub** - Gestion de version
-- **Windows**, **Linux**, **macOS** - Systèmes compatibles
+- Compatible **Windows**, **Linux** et **macOS**  
+- IDE recommandés : *Visual Studio Code*, *IntelliJ IDEA*, *Eclipse*  
+- Contrôle de version : **Git & GitHub**
 
 ### Documentation
-- **Javadoc** - Documentation technique
-- **Markdown** - Documentation projet
+- **Javadoc** – Documentation technique générée automatiquement  
+- **Markdown (.md)** – Documentation lisible sur GitHub  
 
 ---
 
-##  Structure du projet  
-
+## Structure du projet  
 ```
 ├── pom.xml
 ├── src/main/java
@@ -113,13 +115,13 @@ javac -d out $(find src -name "*.java")
 Exécuter le projet en précisant le mode souhaité :  
 ```bash
 # Mode sans chevauchement
-java -cp out app.DemoEnonce sans
+java -cp out app.DemoEnonce sans 50 10
 
 # Mode avec chevauchement
-java -cp out app.DemoEnonce avec
+java -cp out app.DemoEnonce avec 50 10
 
 # Mode avec débordement (overflow)
-java -cp out app.DemoEnonce debordement
+java -cp out app.DemoEnonce debordement 50 10
 ```
 
 ---
@@ -130,35 +132,33 @@ java -cp out app.DemoEnonce debordement
 
 ### Exemple 1 : Mode sans chevauchement
 ```
-Original (neg): [5, -3, 12, -7, 0, -8, 1]
-Tableau compressé : [7, 5, 0, 8, 8442029, 9]
-Tableau décompressé : [5, -3, 12, -7, 0, -8, 1]
-mode=sans get(3)=-7 ok=true
-Mesures (ms) pour neg : {compresser_ms=0.0042899999999999995, decompresser_ms=0.0011800000000000003, acceder_ms=3.15E-4}
+Mode         : avec
+Débit (Mb/s) : 50.0
+Latence (ms) : 10.0
+
+────────────────────────────────────────────────────
+Cas 1 : Tableau positif/mixte
+n=7
+Original        : [5, 3, 12, 7, 0, 8, 1]
+get(3)          : 7
+Round-trip OK   : true
+Mesures (ms)    : {compresser=0.0036, decompresser=0.0014, acceder=0.0003}
+Tailles (octets): original=28, compressé=20, gain=28.57%
+Transmission (ms)
+ - brut (sans)           : 10.004
+ - compressé (comp+tx+dec): 10.022  [comp=0.016, tx=10.003, decomp=0.003]
+Rentable ? NON
 
 ```
 
-### Exemple 2 : Mode avec chevauchement
+### Exemple 2 : Mode débordement (overflow)
 ```
-Original (rand): [91, 37, -86, 76, -88, -41, -88, 48, -23, -42]
-mode=avec get(4)=-88 ok=true
-Mesures (ms) pour rand : {compresser_ms=0.0017250000000000004, decompresser_ms=0.0011250000000000003, acceder_ms=2.3999999999999998E-4}
-```
-
-### Exemple 3 : Mode débordement (overflow)
-```
-Exemple overflow : [1, 2, 3, 1024, 4, 5, 2048]
-Restauration     : [1, 2, 3, 1024, 4, 5, 2048]
-Acces direct ex.: i=3 -> 1024, i=6 -> 2048
-```
-
-### Exemple 4 : Mesures de performance  
+Overflow        : count=2, kBase=6, indexBits=2
+Exemple overflow: [1, 2, 3, 1024, 4, 5, 2048]
+Restauration    : [1, 2, 3, 1024, 4, 5, 2048]
+Accès direct    : i=3 -> 1024, i=6 -> 2048
 
 ```
-Mesures (ms) : {compresser_ms=0.0017, decompresser_ms=0.0010, acceder_ms=0.0003}
-```
-Les mesures sont calculées à l’aide de la classe `BenchProto`, avec plusieurs répétitions pour obtenir des moyennes fiables.  
-
 ---
 ## Génération de la Documentation Javadoc 
 
@@ -271,6 +271,7 @@ mvn test
 ```
 
 ---
+
 
 ##  Contributrice  
 
