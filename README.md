@@ -48,7 +48,7 @@ L’objectif est de :
 
 ---
 
-## 📁 Structure du projet  
+## Structure du projet  
 
 
 ```
